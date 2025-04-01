@@ -52,8 +52,18 @@ int main()
         {
             // calcula a posição do raio e a direção dele
             double cameraX = 2 * x / double(w) - 1;
-            double raioX = dirX + planoX * cameraX;
-            double raioY = dirY + planoY * cameraX;
+            double raioDirX = dirX + planoX * cameraX;
+            double raioDirY = dirY + planoY * cameraX;
+
+            // qual posição do mapa  estamos
+
+            int mapaX = int(posX);
+            int mapaY = int(posY);
+
+            // distancia necessária para o raio atravessar um ladrilho, 
+
+            double deltaDistX = (raioDirX == 0) ? 1e30 : std::abs(1 / raioDirX);
+            double deltaDistY = (raioDirY == 0) ? 1e30 : std::abs(1 / raioDirY);
             
         }
     }
