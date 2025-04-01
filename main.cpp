@@ -48,7 +48,14 @@ int main()
 
     while (!done)
     {
-        
+        for (int x = 0; x < w; x++)
+        {
+            // calcula a posição do raio e a direção dele
+            double cameraX = 2 * x / double(w) - 1;
+            double raioX = dirX + planoX * cameraX;
+            double raioY = dirY + planoY * cameraX;
+            
+        }
     }
 
     return 0;
