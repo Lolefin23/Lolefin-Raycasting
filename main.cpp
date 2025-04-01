@@ -60,11 +60,20 @@ int main()
             int mapaX = int(posX);
             int mapaY = int(posY);
 
-            // distancia necessária para o raio atravessar um ladrilho, 
+            // distancia necessária para o raio atravessar um ladrilho,
 
             double deltaDistX = (raioDirX == 0) ? 1e30 : std::abs(1 / raioDirX);
             double deltaDistY = (raioDirY == 0) ? 1e30 : std::abs(1 / raioDirY);
-            
+            double perpPardeDist;
+
+            // escolhe a direção a ser seguida
+            int passoX;
+            int passoY;
+
+            // Teve colisão? foi vertical ou horizontal
+
+            int acerto = 0;
+            int lado;   
         }
     }
 
