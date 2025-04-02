@@ -60,6 +60,11 @@ int main()
             int mapaX = int(posX);
             int mapaY = int(posY);
 
+            // comprimento do raio da posição atual até o próxima lado ( fronteira ) em X ou Y
+
+            double ladoDistX;
+            double ladoDistY;
+
             // distancia necessária para o raio atravessar um ladrilho,
 
             double deltaDistX = (raioDirX == 0) ? 1e30 : std::abs(1 / raioDirX);
@@ -73,7 +78,22 @@ int main()
             // Teve colisão? foi vertical ou horizontal
 
             int acerto = 0;
-            int lado;   
+            int lado;
+
+            if (raioDirX < 0)
+            {
+                passoX = -1;
+                ladoDistX = (posX - mapaX) * deltaDistX;
+            }
+            else
+            {
+                passoX = 1;
+                ladoDistX = (mapaX + 1 - posX) * deltaDistX;
+            }
+
+            if (raioDirX > 0)
+            {
+            }
         }
     }
 
