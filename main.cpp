@@ -8,8 +8,8 @@ using namespace QuickCG;
 
 #define larguraMapa 24
 #define alturaMapa 24
-#define telaAltura 640
-#define telaLargura 480
+#define telaLargura 800
+#define telaAltura 800
 
 int mapaMundo[larguraMapa][alturaMapa] =
     {
@@ -23,33 +23,33 @@ int mapaMundo[larguraMapa][alturaMapa] =
         {1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
         {1, 0, 0, 0, 0, 0, 2, 2, 0, 2, 2, 0, 0, 0, 0, 3, 0, 3, 0, 3, 0, 0, 0, 1},
         {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1},
         {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1},
         {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1},
         {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-        {1, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1},
+        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+        {1, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
         {1, 4, 0, 4, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-        {1, 4, 0, 0, 0, 0, 5, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1},
+        {1, 4, 0, 0, 0, 0, 5, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
         {1, 4, 0, 4, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-        {1, 4, 0, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1},
+        {1, 4, 0, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
         {1, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
         {1, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
         {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
 
-int main()
+int main(int argc, char *argv[])
 {
-    double posX = 22, posY = 0;       // posicoes iniciais
+    double posX = 22, posY = 12;      // posicoes iniciais
     double dirX = -1, dirY = 0;       // vetor inicial de direcao
     double planoX = 0, planoY = 0.66; // Plano da camera
 
-    double tempoVelho; // tempo do frame anterior
-    double tempo;      // tempo atual
+    double tempo = 0;      // tempo atual
+    double tempoVelho = 0; // tempo do frame anterior
 
-    screen(telaAltura, telaLargura, 0, "Lanca Raios");
+    screen(telaLargura, telaAltura, 0, "Lanca Raios");
 
-    while (!done)
+    while (!done())
     {
         for (int x = 0; x < w; x++)
         {
@@ -208,14 +208,14 @@ int main()
             if (mapaMundo[int(posX + dirX * velocidadeMov)][int(posY)] == false)
                 posX += dirX * velocidadeMov;
             if (mapaMundo[int(posX)][int(posY + dirY * velocidadeMov)] == false)
-                posX += dirX * velocidadeMov;
+                posY += dirY * velocidadeMov;
         }
         // anda para trás se não houver parede
         if (keyDown(SDLK_DOWN))
         {
-            if (mapaMundo[int(posY + dirY * velocidadeMov)][int(posY)] == false)
-                posY -= dirY * velocidadeMov;
-            if (mapaMundo[int(posY)][int(posY + dirY * velocidadeMov)] == false)
+            if (mapaMundo[int(posX - dirX * velocidadeMov)][int(posY)] == false)
+                posX -= dirX * velocidadeMov;
+            if (mapaMundo[int(posX)][int(posY - dirY * velocidadeMov)] == false)
                 posY -= dirY * velocidadeMov;
         }
         // Gira a camera para a direita
