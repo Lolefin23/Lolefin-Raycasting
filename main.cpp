@@ -134,6 +134,8 @@ int main()
                         perpPardeDist = (ladoDistX - deltaDistX);
                     else
                         perpPardeDist = (ladoDistY - deltaDistY);
+
+                    
                 }
             }
         }
