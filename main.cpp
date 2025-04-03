@@ -97,12 +97,12 @@ int main()
             if (raioDirY < 0)
             {
                 passoY = -1;
-                ladoDistY = (posY - mapaY) * ladoDistY;
+                ladoDistY = (posY - mapaY) * deltaDistY;
             }
             else
             {
                 passoY = 1;
-                ladoDistY = (mapaY + 1 - posY);
+                ladoDistY = (mapaY + 1 - posY) * deltaDistY;
             }
 
             // Inicia o DDA
@@ -121,7 +121,7 @@ int main()
                 else
                 {
                     ladoDistY += deltaDistY;
-                    mapaY = +passoX;
+                    mapaY += passoY;
                     lado = 1;
                 }
 
@@ -213,10 +213,10 @@ int main()
         // anda para trás se não houver parede
         if (keyDown(SDLK_DOWN))
         {
-            if (mapaMundo[int(posX + dirX * velocidadeMov)][int(posY)] == false)
-                posX -= dirX * velocidadeMov;
-            if (mapaMundo[int(posX)][int(posY + dirY * velocidadeMov)] == false)
-                posX -= dirX * velocidadeMov;
+            if (mapaMundo[int(posY + dirY * velocidadeMov)][int(posY)] == false)
+                posY -= dirY * velocidadeMov;
+            if (mapaMundo[int(posY)][int(posY + dirY * velocidadeMov)] == false)
+                posY -= dirY * velocidadeMov;
         }
         // Gira a camera para a direita
 
