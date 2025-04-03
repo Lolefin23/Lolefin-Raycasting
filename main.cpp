@@ -198,7 +198,49 @@ int main()
 
         double velocidadeMov = tempoQuadro * 5.0; // velocidade constante independente do processador
         double velocidadeRot = tempoQuadro * 3.0;
-        
+
+        // leitura de inputs do usuário
+
+        readKeys();
+        // anda para frente se não houver parede
+        if (keyDown(SDLK_UP))
+        {
+            if (mapaMundo[int(posX + dirX * velocidadeMov)][int(posY)] == false)
+                posX += dirX * velocidadeMov;
+            if (mapaMundo[int(posX)][int(posY + dirY * velocidadeMov)] == false)
+                posX += dirX * velocidadeMov;
+        }
+        // anda para trás se não houver parede
+        if (keyDown(SDLK_DOWN))
+        {
+            if (mapaMundo[int(posX + dirX * velocidadeMov)][int(posY)] == false)
+                posX -= dirX * velocidadeMov;
+            if (mapaMundo[int(posX)][int(posY + dirY * velocidadeMov)] == false)
+                posX -= dirX * velocidadeMov;
+        }
+        // Gira a camera para a direita
+
+        if (keyDown(SDLK_RIGHT))
+        {
+            double velhoDirX = dirX;
+            dirX = dirX * cos(-velocidadeRot) - dirY * sin(-velocidadeRot);
+            dirY = velhoDirX * sin(-velocidadeRot) + dirY * cos(-velocidadeRot);
+            double velhoPlanoX = planoX;
+            planoX = planoX * cos(-velocidadeRot) - planoY * sin(-velocidadeRot);
+            planoY = velhoPlanoX * sin(-velocidadeRot) + planoY * cos(-velocidadeRot);
+        }
+
+        // girar para a camera esquerda
+
+        if (keyDown(SDLK_LEFT))
+        {
+            double velhoDirX = dirX;
+            dirX = dirX * cos(velocidadeRot) - dirY * sin(velocidadeRot);
+            dirY = velhoDirX * sin(velocidadeRot) + dirY * cos(velocidadeRot);
+            double velhoPlanoX = planoX;
+            planoX = planoX * cos(velocidadeRot) - planoY * sin(velocidadeRot);
+            planoY = velhoPlanoX * sin(velocidadeRot) + planoY * cos(velocidadeRot);
+        }
     }
 
     return 0;
