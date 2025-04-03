@@ -44,6 +44,9 @@ int main()
     double dirX = -1, dirY = 0;       // vetor inicial de direcao
     double planoX = 0, planoY = 0.66; // Plano da camera
 
+    double tempoVelho; // tempo do frame anterior
+    double tempo;      // tempo atual
+
     screen(telaAltura, telaLargura, 0, "Lanca Raios");
 
     while (!done)
@@ -135,10 +138,67 @@ int main()
                     else
                         perpPardeDist = (ladoDistY - deltaDistY);
 
-                    
+                    // inicio renderização
+
+                    int alturaLinha = int(h / perpPardeDist);
+
+                    // calcula o pixel mais baixo para desenhar
+                    int inicioDesenha = -alturaLinha / 2 + h / 2;
+                    if (inicioDesenha < 0)
+                        inicioDesenha = 0;
+                    // calcula o pixel mais baixo para desenhar
+                    int fimDesenha = alturaLinha / 2 + h / 2;
+                    if (fimDesenha >= h)
+                        fimDesenha = h - 1;
+
+                    // Pinta as paredes
+
+                    ColorRGB cor;
+                    switch (mapaMundo[mapaX][mapaY])
+                    {
+                    case 1:
+                        cor = RGB_Red;
+                        break;
+
+                    case 2:
+                        cor = RGB_Green;
+                        break;
+
+                    case 3:
+                        cor = RGB_Blue;
+                        break;
+
+                    case 4:
+                        cor = RGB_White;
+                        break;
+
+                    default:
+                        cor = RGB_Yellow;
+                        break;
+                    }
+                    // da uma cor diferente para os lados
+                    if (lado == 1)
+                        cor = cor / 2;
+
+                    // desenha os pixels de uma linha vertical
+
+                    verLine(x, inicioDesenha, fimDesenha, cor);
                 }
             }
         }
+        // temporizador para input e contador de FPS
+        tempoVelho = tempo;
+        tempo = getTicks();
+        double tempoQuadro = (tempo - tempoVelho) / 1000; // quanto tempo demorou em segundos
+        print(1.0 / tempoQuadro);                         // contador de FPS
+        redraw();
+        cls();
+
+        // modificadores de velocidade
+
+        double velocidadeMov = tempoQuadro * 5.0; // velocidade constante independente do processador
+        double velocidadeRot = tempoQuadro * 3.0;
+        
     }
 
     return 0;
