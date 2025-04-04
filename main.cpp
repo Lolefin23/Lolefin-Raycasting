@@ -8,8 +8,8 @@ using namespace QuickCG;
 
 #define larguraMapa 24
 #define alturaMapa 24
-#define telaLargura 800
-#define telaAltura 800
+#define telaLargura 640
+#define telaAltura 480
 
 int mapaMundo[larguraMapa][alturaMapa] =
     {
@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
 
             double ladoDistX;
             double ladoDistY;
-
+            
             // distancia necessária para o raio atravessar um ladrilho,
 
             double deltaDistX = (raioDirX == 0) ? 1e30 : std::abs(1 / raioDirX);

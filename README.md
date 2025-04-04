@@ -7,8 +7,17 @@ O desenvolvimento pode ser **demorado**, pois meu objetivo não é apenas copiar
 
 🔍 **Acompanhe o progresso!** 📈  
 
-# FINALIZADO A VERSÃO SEM TEXTURAS 
+# O CÓDIGO FUNCIONA 
 
 para compilar basta digitar
 
 g++ main.cpp quickcg.cpp -o raycaster -I. -lSDL
+
+## Lista de afazeres 
+
+- Fazer o teto e o chão
+- Colocar texturas
+- Colocar sprites 
+
+### Projeto futuro 
+Tenho como projeto realmente implementar inimigos com comportamentos e armas 
