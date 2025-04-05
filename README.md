@@ -11,7 +11,7 @@ O desenvolvimento pode ser **demorado**, pois meu objetivo não é apenas copiar
 
 para compilar basta digitar
 
-g++ main.cpp quickcg.cpp -o raycaster -I. -lSDL
+g++ main.cpp quickcg.cpp -o main -I. -lSDL
 
 ## Lista de afazeres 
 
